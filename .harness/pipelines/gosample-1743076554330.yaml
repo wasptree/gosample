@@ -21,6 +21,20 @@ pipeline:
                       echo "Welcome to Harness CI"
                       go build
                       go test
+              - step:
+                  type: Run
+                  name: Package Go App
+                  identifier: package_go_app
+                  spec:
+                    command: |-
+                      echo "Package Go App"
+                      docker build -t wasptree/example-go-app-<+pipeline.branch>:<+pipeline.variables.version> .
+              - step:
+                  type: Run
+                  name: Push Go App
+                  identifier: push_go_app
+                  spec:
+                    command: ""
           platform:
             os: Linux
             arch: Amd64
@@ -33,3 +47,9 @@ pipeline:
         connectorRef: account.Github
         repoName: wasptree/gosample
         build: <+input>
+  variables:
+    - name: version
+      type: String
+      description: ""
+      required: false
+      value: "1.0"
