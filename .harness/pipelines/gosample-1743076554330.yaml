@@ -14,11 +14,13 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Echo Welcome Message
-                  identifier: Echo_Welcome_Message
+                  name: Build Go App
+                  identifier: build_go_app
                   spec:
-                    shell: Sh
-                    command: echo "Welcome to Harness CI"
+                    command: |-
+                      echo "Welcome to Harness CI"
+                      go build
+                      go test
           platform:
             os: Linux
             arch: Amd64
