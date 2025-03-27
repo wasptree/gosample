@@ -20,6 +20,13 @@ pipeline:
                     command: |-
                       echo "Welcome to Harness CI"
                       go build
+              - step:
+                  type: Run
+                  name: Test Go App
+                  identifier: test_go_app
+                  spec:
+                    command: |-
+                      echo "Testing Go App"
                       go test
               - step:
                   type: Run
@@ -27,7 +34,7 @@ pipeline:
                   identifier: package_go_app
                   spec:
                     command: |-
-                      echo "Package Go App"
+                      echo "Packaing Go App"
                       docker build -t wasptree/example-go-app-<+pipeline.branch>:<+pipeline.variables.version> .
               - step:
                   type: Run
