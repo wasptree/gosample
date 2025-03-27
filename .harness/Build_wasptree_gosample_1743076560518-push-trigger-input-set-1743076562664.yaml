@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_wasptree_gosample_1743076560518-push-trigger-input-set
+  identifier: Build_wasptree_gosample_1743076560518pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Andy_Sutcliffe
+  pipeline:
+    identifier: Build_wasptree_gosample_1743076560518
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
